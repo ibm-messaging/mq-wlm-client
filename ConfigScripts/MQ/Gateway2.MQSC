@@ -1,0 +1,83 @@
+* Sample program 
+* (C) COPYRIGHT International Business Machines Corp. 2012,2013
+* All Rights Reserved * Licensed Materials - Property of IBM
+*
+* This sample program is provided AS IS and may be used, executed,
+* copied and modified without royalty payment by customer
+*
+* (a) for its own instruction and study,
+* (b) in order to develop applications designed to run with an IBM
+*     WebSphere product for the customer's own internal use.
+
+*** CONFIGURATION TO JOIN THE CLUSTER ***
+
+* In this simple two qmgr example, both queue managers are full repositories for the cluster.
+* Subsequent queue managers joining the cluster should not be configured as full repositories.
+ALTER QMGR REPOS(MQHUB)
+
+* Create a listener.
+DEFINE LISTENER(LISTENER.TCP) TRPTYPE(TCP) PORT(1422) CONTROL(QMGR)
+START LISTENER(LISTENER.TCP)
+
+* Define the cluster membership for this qmgr. Note no SSL or security applied.
+* We use quite aggressive heartbeat and retry, on the basis that there is a fast network
+* between the servers in the hub and we don't want messages to be delayed for too long
+* in the case of a network issue or server failure.
+DEFINE CHANNEL(MQHUB.GATEWAY2) CHLTYPE(CLUSRCVR) CONNAME('localhost(1422)') CLUSTER(MQHUB) HBINT(5) SHORTTMR(5) SHORTRTY(180) LONGTMR(60) LONGRTY(999999999)
+
+* Define the bootstrap connection to the other full repository to form the cluster
+DEFINE CHANNEL(MQHUB.GATEWAY1) CHLTYPE(CLUSSDR) CONNAME('localhost(1421)') CLUSTER(MQHUB)
+
+*** COMMON CONFIGURATION FOR ALL CLIENT ATTACHMENT ***
+
+* We create a SVRCONN channel for applications to connect on.
+* NOTE no SSL or security applied, and the below setting is only suitable for
+* a development environment, or an environment where the network
+* itself is considered trusted and secure to the point that no MQ-level
+* security is required.
+* If you are running this on UNIX, you will need to change 'MUSR_MQADMIN' to 'mqm'.
+* In all production environments, even those without SSL, consider using
+* a non-admin user in MCAUSER here, and granting explicit OAM privledges
+* We set SHARECNV(1) as a good starting point for performance tuning.
+DEFINE CHANNEL(WAS.CLIENTS) CHLTYPE(SVRCONN) SHARECNV(1) HBINT(5) MCAUSER('MUSR_MQADMIN')
+
+* Allow admin users to connect on WAS.CLIENTS
+* NOTE: This is for testing purposes on a development environment.
+*       On a production queue manager a non-admin user should be used.
+SET CHLAUTH(WAS.CLIENTS) TYPE(BLOCKUSER) USERLIST(ALLOWANY)
+
+*** CONFIGURATION SPECIFIC TO BEING IN THE 'SENDING GATEWAY' ROLE ***
+
+* Create a simple reply queue for the sending application attaching to this gateway
+DEFINE QLOCAL(SENDINGAPP.REPLY) SHARE
+
+* Also create a separate reply queue for each instance of our clustered reply
+* processing example. Note the WebSphere Application Server deployment example
+* contains bindings that deploy against INST1.
+* Note the reply queue itself isn't shared in the cluster.
+DEFINE QLOCAL(SENDINGAPP.INST1.LISTENER) BOTHRESH(1) BOQNAME(SENDINGAPP.BADREPLIES) SHARE
+DEFINE QLOCAL(SENDINGAPP.INST2.LISTENER) BOTHRESH(1) BOQNAME(SENDINGAPP.BADREPLIES) SHARE
+
+* Create a queue manager alias, for sending messages to the clustered reply queue
+* of each instance of our sending app
+DEFINE QREMOTE(SENDINGAPP.INST1) RNAME('') RQMNAME('') DEFBIND(NOTFIXED) CLUSTER(MQHUB)
+DEFINE QREMOTE(SENDINGAPP.INST2) RNAME('') RQMNAME('') DEFBIND(NOTFIXED) CLUSTER(MQHUB)
+
+* Create a backout queue for clustered replies that cannot be processed
+DEFINE QLOCAL(SENDINGAPP.BADREPLIES) MAXDEPTH(1000000) SHARE
+
+*** CONFIGURATION SPECIFIC TO BEING IN THE 'RECEIVING GATEWAY' ROLE ***
+
+* Create the queue for requests to our simple service.
+* NOTE: We share it in the cluster, and we set DEFBIND(NOTFIXED) an CLWLUSEQ(ANY).
+*       As a result workload balancing happens between the sending gateway and the
+*       receiving gateway layers within the MQ Hub, even though they're the same
+*       queue managers. The workload balancing happens for every request.
+DEFINE QLOCAL(WLMMDB.REQUEST) BOTHRESH(5) BOQNAME(WLMMDB.BACKOUT) DEFBIND(NOTFIXED) CLWLUSEQ(ANY) CLUSTER(MQHUB) SHARE
+
+* Define a local backout queue, as is good practice for handling exceptions during processing.
+* NOTE: Having configured a backout queue, we will disable the
+*       "Stop endpoint if message delivery fails" setting on the WebSphere Application
+*       Server activation specification.
+DEFINE QLOCAL(WLMMDB.BACKOUT) MAXDEPTH(1000000) SHARE
+

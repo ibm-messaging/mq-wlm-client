@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="WLMMDB_21">
+        <wb-resource deploy-path="/" source-path="/ejbModule" tag="defaultRootSource"/>
+        <property name="java-output-path" value="/WLMMDB_21/ejbModule"/>
+        <property name="ClientProject" value="WLMMDB_21Client"/>
+        <property name="ClientJARURI" value="WLMMDB_21Client.jar"/>
+    </wb-module>
+</project-modules>

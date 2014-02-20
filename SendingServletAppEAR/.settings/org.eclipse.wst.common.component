@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SendingServletAppEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="SendingServletApp.war" deploy-path="/" handle="module:/resource/SendingServletApp/SendingServletApp">
+            <dependent-object>Module_1367255331502</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SendingAsyncReplyMDB.jar" deploy-path="/" handle="module:/resource/SendingAsyncReplyMDB/SendingAsyncReplyMDB">
+            <dependent-object>Module_1367309777746</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="WLMJMSAttachLibrary.jar" deploy-path="/lib" handle="module:/resource/WLMJMSAttachLibrary/WLMJMSAttachLibrary">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

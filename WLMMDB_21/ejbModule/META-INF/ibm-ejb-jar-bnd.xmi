@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbbnd:EJBJarBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejb="ejb.xmi" xmlns:ejbbnd="ejbbnd.xmi" xmi:id="EJBJarBinding_1392068252728">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+  <ejbBindings xmi:type="ejbbnd:MessageDrivenBeanBinding" xmi:id="MessageDrivenBeanBinding_1392068252728" activationSpecJndiName="jms/GATEWAY1_AS" destinationJndiName="jms/WLMMDB.REQUEST">
+    <enterpriseBean xmi:type="ejb:MessageDriven" href="META-INF/ejb-jar.xml#WLMMDB1"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1392068345807" jndiName="jms/GATEWAY1_CF">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1392068345807"/>
+    </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_1392068901291" jndiName="jms/GATEWAY2_CF">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1392068901291"/>
+    </resRefBindings>
+    <messageDestinationRefBindings xmi:id="MessageDestinationRefBinding_1392068252728" jndiName="jms/WLMMDB.BACKOUT">
+      <bindingMessageDestinationRef href="META-INF/ejb-jar.xml#MessageDestinationRef_1392068252728"/>
+    </messageDestinationRefBindings>
+  </ejbBindings>
+  <ejbBindings xmi:type="ejbbnd:MessageDrivenBeanBinding" xmi:id="MessageDrivenBeanBinding_1392068368588" activationSpecJndiName="jms/GATEWAY2_AS" destinationJndiName="jms/WLMMDB.REQUEST">
+    <enterpriseBean xmi:type="ejb:MessageDriven" href="META-INF/ejb-jar.xml#WLMMDB2"/>
+    <resRefBindings xmi:id="ResourceRefBinding_1392068368588" jndiName="jms/GATEWAY2_CF">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1392068368588"/>
+    </resRefBindings>
+    <resRefBindings xmi:id="ResourceRefBinding_1392068920448" jndiName="jms/GATEWAY1_CF">
+      <bindingResourceRef href="META-INF/ejb-jar.xml#ResourceRef_1392068920448"/>
+    </resRefBindings>
+    <messageDestinationRefBindings xmi:id="MessageDestinationRefBinding_1392068533979" jndiName="jms/WLMMDB.BACKOUT">
+      <bindingMessageDestinationRef href="META-INF/ejb-jar.xml#MessageDestinationRef_1392068533979"/>
+    </messageDestinationRefBindings>
+  </ejbBindings>
+</ejbbnd:EJBJarBinding>

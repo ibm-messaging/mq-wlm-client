@@ -1,0 +1,4 @@
+#Fri Apr 26 17:09:27 BST 2013
+org.eclipse.wst.ws.service.policy.projectEnabled=false
+com.ibm.ast.ws.jaxws.annotations.v7.jaxws.default.value.key=com.ibm.ast.ws.jaxws.annotations.v7.default
+eclipse.preferences.version=1

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "rasPluginConfig.dtd">
+<configuration enabled="false" formatInsertedTracePoints="false" generateMarkers="true" generateMetrics="false" markerSeverity="warning" performSUIDChecking="false">
+  	<tracePoints>
+		<registration modifiers="private, static, final" name="tc" required="always" returnType="com.ibm.ejs.ras.TraceComponent" scope="type">
+	        <method class="com.ibm.ejs.ras.Tr" name="register" static="true">
+	            <parameters>
+	                <containingClass position="1"/>
+	                <traceGroup position="2" value="null"/>
+	                <messageBundle position="3" value="null"/>               
+	            </parameters>
+	        </method>
+	    </registration>
+	    <staticInitializerEntry required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="entry" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>				    
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>					
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</staticInitializerEntry>
+		<staticInitializerExit required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="exit" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>
+				    <returnValue position="3" validation="none"/>
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</staticInitializerExit>
+	    <constructorEntry required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="entry" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>				    
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>
+					<methodParameters includeThis="no" position="3" useVarArgs="false" validation="none"/>					
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</constructorEntry>
+		<constructorExit required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="exit" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>
+				    <returnValue position="3" validation="none"/>
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</constructorExit>
+		<methodEntry required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="entry" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>
+					<methodParameters includeThis="last" position="3" useVarArgs="false" validation="none"/>					
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</methodEntry>
+		<methodExit required="never">
+			<method class="com.ibm.ejs.ras.Tr" name="exit" static="true">
+				<parameters>
+					<registeredObjectReference position="1"/>
+					<methodName fullyQualified="false" includeIncorrectNameInMarker="false" position="2" validation="startsWith"/>
+				    <returnValue position="3" validation="none"/>
+				</parameters>
+			</method>
+			<guard>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEntryEnabled" static="false"/>
+			</guard>
+		</methodExit>	
+		<catchBlockInstrumentation exclusionComment="No FFDC Code Needed" exclusionCommentValidation="equals" required="never">
+			<method class="com.ibm.ws.ffdc.FFDCFilter" name="processException" static="true">
+				<parameters>
+					<caughtException position="1"/>
+					<methodName fullyQualified="true" includeIncorrectNameInMarker="false" position="2" validation="exact"/>
+					<lineNumber autoCorrect="false" position="3" validation="false"/>
+					<this position="4"/>
+				</parameters>
+			</method>
+	    </catchBlockInstrumentation>
+	    <debug>
+	        <method class="com.ibm.ejs.ras.Tr" name="debug" static="true">
+	            <parameters>
+	                <registeredObjectReference position="1"/>
+	                <string position="2" validation="exact"/>
+	                <object position="3"/>
+	            </parameters>
+	        </method>
+	        <guard>
+	            <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isDebugEnabled" static="false"/>
+			</guard>
+	    </debug>
+	    <event>
+	        <method class="com.ibm.ejs.ras.Tr" name="event" static="true">
+	            <parameters>
+	                <registeredObjectReference position="1"/>
+	                <string position="2" validation="exact"/>
+	                <object position="3"/>
+	            </parameters>
+	        </method>
+	        <guard>
+	            <method class="com.ibm.ejs.ras.TraceComponent" name="isAnyTracingEnabled" static="true"/>
+			    <method class="com.ibm.ejs.ras.TraceComponent" name="isEventEnabled" static="false"/>
+			</guard>
+	    </event>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="error" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="warning" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="audit" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="fatal" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="info" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	    <message>
+	    	<method class="com.ibm.ejs.ras.Tr" name="service" static="true">
+	    		<parameters>
+	    			<registeredObjectReference position="1"/>
+	    			<messageKey position="2" validation="exact"/>
+	    			<messageArguments position="3" validation="count"/>
+	    		</parameters>
+	    	</method>
+	    </message>
+	</tracePoints>
+	<exclusionList>
+		<excludedMethod class="*" name="toString" parameters="" returnType="java.lang.String"/>
+		<excludedMethod class="*" name="hashCode" parameters="" returnType="int"/>
+	</exclusionList>
+	<parameterWrappers>
+	    <parameterWrapper required="true" type="int">
+	    	<classInstanceCreation type="Integer">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="byte">
+	    	<classInstanceCreation type="Byte">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="short">
+	    	<classInstanceCreation type="Short">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="long">
+	    	<classInstanceCreation type="Long">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="double">
+	    	<classInstanceCreation type="Double">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="char">
+	    	<classInstanceCreation type="Character">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="float">
+	    	<classInstanceCreation type="Float">
+	    	    <parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</classInstanceCreation>
+	    </parameterWrapper>
+	    <parameterWrapper required="true" type="boolean">
+	    	<methodInvocation class="Boolean" name="valueOf" static="true">
+	        	<parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</methodInvocation>
+	    </parameterWrapper>
+	    <parameterWrapper required="false" type="byte[]">
+	        <methodInvocation class="com.ibm.ejs.util.Util" name="toHexString" static="true">
+	        	<parameters>
+	    	        <currentParameter position="1"/>
+	    	    </parameters>
+	    	</methodInvocation>
+	    </parameterWrapper>
+	</parameterWrappers>
+</configuration>

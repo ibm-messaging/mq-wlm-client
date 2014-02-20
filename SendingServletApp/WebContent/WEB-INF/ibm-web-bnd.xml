@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-bnd 
+	xmlns="http://websphere.ibm.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-web-bnd_1_1.xsd"
+	version="1.1">
+	<virtual-host name="default_host" />
+	<resource-ref name="jms/GWCF1" binding-name="jms/GATEWAY1_CF"/>
+	<resource-ref name="jms/GWCF2" binding-name="jms/GATEWAY2_CF"/>
+
+	<!-- Note the below resource references might display errors in RAD, if validation is enabled
+	     and the validation it does not detect that the resource references have been declared via
+	     annotated fields. -->
+	<resource-ref name="jms/FireAndForgetTarget" binding-name="jms/WLMMDB.REQUEST" />
+	<resource-ref name="jms/RequestQueue" binding-name="jms/WLMMDB.REQUEST" />
+	<resource-ref name="jms/SimpleReplyQueue" binding-name="jms/SENDINGAPP.REPLY" />
+	<resource-ref name="jms/AdvancedReplyQueue" binding-name="jms/SENDINGAPP.APPINST.QMALIAS" />
+</web-bnd>

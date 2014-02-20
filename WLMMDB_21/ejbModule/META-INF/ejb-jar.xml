@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar id="ejb-jar_ID" version="2.1" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+	<display-name>WMMMDB_21</display-name>
+	<enterprise-beans>
+		<message-driven id="WLMMDB1">
+			<ejb-name>WLMMDB1</ejb-name>
+			<ejb-class>com.ibm.example.wlmmdb.ejb21.WLMMDB</ejb-class>
+			<messaging-type>javax.jms.MessageListener</messaging-type>
+			<transaction-type>Container</transaction-type>
+			<message-destination-type>javax.jms.Queue</message-destination-type>
+			<resource-ref id="ResourceRef_1392068345807">
+				<description>
+				</description>
+				<res-ref-name>jms/GWCF1</res-ref-name>
+				<res-type>javax.jms.ConnectionFactory</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+			<resource-ref id="ResourceRef_1392068901291">
+				<description>
+				</description>
+				<res-ref-name>jms/GWCF2</res-ref-name>
+				<res-type>javax.jms.ConnectionFactory</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+			<message-destination-ref id="MessageDestinationRef_1392068252728">
+				<description>
+				</description>
+				<message-destination-ref-name>jms/DefaultReplyQ</message-destination-ref-name>
+				<message-destination-type>javax.jms.Queue</message-destination-type>
+				<message-destination-usage>Produces</message-destination-usage>
+				<message-destination-link>jms/DefaultReplyQ1</message-destination-link>
+			</message-destination-ref>
+		</message-driven>
+		<message-driven id="WLMMDB2">
+			<ejb-name>WLMMDB2</ejb-name>
+			<ejb-class>com.ibm.example.wlmmdb.ejb21.WLMMDB</ejb-class>
+			<messaging-type>javax.jms.MessageListener</messaging-type>
+			<transaction-type>Container</transaction-type>
+			<message-destination-type>javax.jms.Queue</message-destination-type>
+			<resource-ref id="ResourceRef_1392068368588">
+				<description>
+				</description>
+				<res-ref-name>jms/GWCF2</res-ref-name>
+				<res-type>javax.jms.ConnectionFactory</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+			<resource-ref id="ResourceRef_1392068920448">
+				<description>
+				</description>
+				<res-ref-name>jms/GWCF1</res-ref-name>
+				<res-type>javax.jms.ConnectionFactory</res-type>
+				<res-auth>Container</res-auth>
+				<res-sharing-scope>Unshareable</res-sharing-scope>
+			</resource-ref>
+			<message-destination-ref id="MessageDestinationRef_1392068533979">
+				<description>
+				</description>
+				<message-destination-ref-name>jms/DefaultReplyQ</message-destination-ref-name>
+				<message-destination-type>javax.jms.Queue</message-destination-type>
+				<message-destination-usage>Produces</message-destination-usage>
+				<message-destination-link>jms/DefaultReplyQ2</message-destination-link>
+			</message-destination-ref>
+		</message-driven>
+	</enterprise-beans>
+	<assembly-descriptor>
+		<message-destination>
+			<description>
+			</description>
+			<message-destination-name>jms/DefaultReplyQ2</message-destination-name>
+		</message-destination>
+		<message-destination>
+			<description>
+			</description>
+			<message-destination-name>jms/DefaultReplyQ1</message-destination-name>
+		</message-destination>
+	</assembly-descriptor>
+</ejb-jar>

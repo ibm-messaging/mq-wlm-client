@@ -1,0 +1,9 @@
+#Wed May 08 11:16:24 BST 2013
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;com.ibm.j2c.emd.core.validation.BOXSDValidator;com.ibm.etools.j2ee.migration.classpath.J2EEClasspathValidator;com.ibm.jee.sdo.jdbc.ui.validators.JDBCMediatorConnectionFileValidator;com.ibm.ast.ws.ext.validator.WsExtValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+eclipse.preferences.version=1
+override=false
+USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;com.ibm.j2c.emd.core.validation.BOXSDValidator;com.ibm.etools.j2ee.migration.classpath.J2EEClasspathValidator;com.ibm.jee.sdo.jdbc.ui.validators.JDBCMediatorConnectionFileValidator;com.ibm.ast.ws.ext.validator.WsExtValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+suspend=false
+vf.version=3
+USER_PREFERENCE=overrideGlobalPreferencesfalse
