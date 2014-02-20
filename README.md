@@ -49,7 +49,7 @@ Quick Start for WebSphere Application Server:
 You can use any existing WebSphere Application Server server.
 For clusters, see http://ibm.co/OeRI6b
 
-1. Setup the MQ environment as follows:
+* Setup the MQ environment as follows:
 
     crtmqm GATEWAY1
     crtmqm GATEWAY2
@@ -58,7 +58,7 @@ For clusters, see http://ibm.co/OeRI6b
     runmqsc GATEWAY1 < ConfigScripts/MQ/Gateway1.MQSC
     runmqsc GATEWAY2 < ConfigScripts/MQ/Gateway2.MQSC
 
-2. Setup your WebSphere Application Server as follows:
+* Setup your WebSphere Application Server as follows:
 
 Windows:
 
@@ -70,7 +70,7 @@ Linux/UNIX:
     /path/to/AppServer/profiles/PROFILE_NAME/bin/wsadmin.sh -lang jython ConfigScripts/AppServer/Configure_MQRA.py
     /path/to/AppServer/profiles/PROFILE_NAME/bin/wsadmin.sh -lang jython ConfigScripts/AppServer/Configure_JMS_resources.py
 
-3. Export the required EAR files from the appropriate Eclipse project, in the Java EE perspective
+* Export the required EAR files from the appropriate Eclipse project, in the Java EE perspective
 
 SendingServletAppEAR - all sample Servlet projects to send messages
 
@@ -78,10 +78,10 @@ WLMMDB_21EAR - EJB 2.1 sample MDB with two endpoints defined in the deployment d
 or
 WLMMDB_30EAR - EJB 3.0 sample MDB with two endpoints defined via annotations
 
-4. Deploy the applications to the app server
+* Deploy the applications to the app server
 
 There should be no need to configure any settings during deployment
 
-5. Access the sample Servlets with the following link - ensuring the change the port as appropriate
+* Access the sample Servlets with the following link - ensuring the change the port as appropriate
 
 http://localhost:9080/SendingServletApp/index.html
