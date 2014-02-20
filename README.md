@@ -47,7 +47,8 @@ Quick Start for WebSphere Application Server:
 ---------------------------------------------
 
 You can use any existing WebSphere Application Server server.
-For clusters, see http://ibm.co/OeRI6b
+
+For Network Deployment cluster environments, see http://ibm.co/OeRI6b
 
 * Setup the MQ environment as follows:
 
