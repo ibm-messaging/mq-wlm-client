@@ -51,6 +51,8 @@ For clusters, see http://ibm.co/OeRI6b
 
 * Setup the MQ environment as follows:
 
+Commands:
+
     crtmqm GATEWAY1
     crtmqm GATEWAY2
     strmqm GATEWAY1
