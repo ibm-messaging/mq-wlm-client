@@ -39,6 +39,11 @@ available queue managers servicing a single application,
 or as complex as multiple interconnected hubs linking all
 applications in your enterprise.
 
+Pull requests
+-------------
+When submitting a pull request, you must include a statement stating you accept
+the terms in (CLA.md).
+
 Quick Start for WebSphere Application Server Liberty Profile:
 -------------------------------------------------------------
 http://ibm.co/1ffGwBg
