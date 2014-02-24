@@ -42,7 +42,7 @@ applications in your enterprise.
 Pull requests
 -------------
 When submitting a pull request, you must include a statement stating you accept
-the terms in (CLA.md).
+the terms in [CLA.md](CLA.md).
 
 Quick Start for WebSphere Application Server Liberty Profile:
 -------------------------------------------------------------
