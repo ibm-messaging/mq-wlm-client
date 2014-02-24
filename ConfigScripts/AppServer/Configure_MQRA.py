@@ -1,13 +1,14 @@
-# Sample program 
-# (C) COPYRIGHT International Business Machines Corp. 2012,2013
-# All Rights Reserved # Licensed Materials - Property of IBM
-#
-# This sample program is provided AS IS and may be used, executed,
-# copied and modified without royalty payment by customer
-#
-# (a) for its own instruction and study,
-# (b) in order to develop applications designed to run with an IBM
-#     WebSphere product for the customer's own internal use.
+# *******************************************************************************
+# * Copyright � 2012,2014 IBM Corporation and other Contributors.
+# *
+# * All rights reserved. This program and the accompanying materials
+# * are made available under the terms of the Eclipse Public License v1.0
+# * which accompanies this distribution, and is available at
+# * http://www.eclipse.org/legal/epl-v10.html
+# *
+# * Contributors:
+# * IBM - Initial Contribution
+# *******************************************************************************
 
 # We need to configure the MQ Resource adapter (at all scopes in the cell) so that it
 # keeps retrying as much as possible, and most importantly allows an application to restart

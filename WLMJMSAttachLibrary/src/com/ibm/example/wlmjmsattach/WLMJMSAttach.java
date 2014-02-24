@@ -1,15 +1,14 @@
-/*
- * Sample program 
- * © COPYRIGHT International Business Machines Corp. 2012,2013
- * All Rights Reserved * Licensed Materials - Property of IBM
+/*******************************************************************************
+ * Copyright ï¿½ 2012,2014 IBM Corporation and other Contributors.
  *
- * This sample program is provided AS IS and may be used, executed,
- * copied and modified without royalty payment by customer
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- * (a) for its own instruction and study,
- * (b) in order to develop applications designed to run with an IBM
- *     WebSphere product for the customer's own internal use.
- */
+ * Contributors:
+ * IBM - Initial Contribution
+ *******************************************************************************/
 package com.ibm.example.wlmjmsattach;
 
 import java.util.Date;
